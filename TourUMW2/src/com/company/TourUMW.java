@@ -18,7 +18,6 @@ public class TourUMW {
         Scanner stdin = new Scanner(System.in);
 
         Campus c = setUpCampus(stdin);
-
         TourStatus tour = TourStatus.getInstance();
 
         tour.setCampus(c);
