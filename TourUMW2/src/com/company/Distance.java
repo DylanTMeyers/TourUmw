@@ -1,8 +1,10 @@
 package com.company;
 
 public class Distance {
-    private Distance () {
+    private Distance() {
 
     }
-    public
+    public Distance getInstance() {
+        return new Distance();
+    }
 }
