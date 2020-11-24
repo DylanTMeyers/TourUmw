@@ -15,6 +15,7 @@ public class TourStatus {
     private boolean canGo;
     private static TourStatus tourInstance;
     private ArrayList<Item> backpack;
+    private Distance tourDistance;
 
 
     /**
@@ -22,6 +23,7 @@ public class TourStatus {
      */
     private TourStatus() {
         backpack = new ArrayList<Item>();
+        tourDistance = Distance.getInstance();
     }
 
 
@@ -105,6 +107,7 @@ public class TourStatus {
 
                 currentLocation = d.getEntering();
                 canGo = true;
+                tourDistance.setDistance(tourDistance.getDistance() + 1);
                 break;
 
             } else {
