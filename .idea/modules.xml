@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../TourUMW2/TourUMW2.iml" filepath="$PROJECT_DIR$/../TourUMW2/TourUMW2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TourUMW2/TourUMW2.iml" filepath="$PROJECT_DIR$/TourUMW2/TourUMW2.iml" />
     </modules>
   </component>
 </project>
