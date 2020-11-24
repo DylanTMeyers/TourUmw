@@ -13,6 +13,7 @@ public class Item {
     private String name;
     private String startLocation;
     private String message;
+    private String itemCommand;
 
 
     /**
@@ -29,18 +30,43 @@ public class Item {
     public Item(Scanner s) {
 
         String line4 = s.nextLine();
-
+        String command;
         while (((s.hasNextLine())) && (!line4.equals("+++"))) {
 
             String line = s.nextLine();
-            name = line;
+                name = line;
+
+
 
             String line2 = s.nextLine();
-            startLocation = line2;
+            if(!line2.contains("[") && !line2.contains(":")){
+                startLocation = line2;
+            }
+            else{
+                command = line2;
+                startLocation = "none";
+                message = "none";
+                break;
+            }
+
 
             String line3 = s.nextLine();
-            message = line3;
+            if(!line3.contains("[") && !line3.contains(":")){
+           message = line3;
+            }
+            else{
+                command = line3;
+            message = "none";
+            break;
+            }
+
+
         }
+        String line5 = s.nextLine();
+        while (((s.hasNextLine())) && (!line5.equals("+++"))) {
+
+        }
+
     }
 
     /**
