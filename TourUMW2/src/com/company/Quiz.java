@@ -8,4 +8,28 @@ public class Quiz {
 	public Quiz() {
 		
 	}
+	
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	
+	public String getQuestion() {
+		return question;
+	}
+	
+	public void setAnswerChoices(String answerChoices) {
+		this.answerChoices = answerChoices;
+	}
+	
+	public String getAnswerChoices() {
+		return answerChoices;
+	}
+	
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+	public String getAnswer() {
+		return answer;
+	}
 }
