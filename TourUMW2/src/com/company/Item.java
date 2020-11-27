@@ -14,6 +14,7 @@ public class Item {
     private String startLocation;
     private String message;
     private String itemCommand;
+    private Quiz quiz;
 
 
     /**
@@ -136,5 +137,12 @@ public class Item {
     public void setStartLocation(String sL) {
         startLocation = sL;
     }
-
+    
+    public Quiz getQuiz() {
+    	return quiz;
+    }
+    
+    public void setQuiz(Quiz quiz) {
+    	this.quiz = quiz;
+    }
 }

@@ -1,5 +1,11 @@
 package com.company;
-
+/**
+ * This class holds the information for the quizes throughout the 
+ * tour.
+ * 
+ * @author Justin Daniels
+ * @version 1.0
+ */
 public class Quiz {
 	private String question;
 	private String answerChoices;
