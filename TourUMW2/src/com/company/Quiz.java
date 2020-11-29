@@ -10,6 +10,7 @@ public class Quiz {
 	private String question;
 	private String answerChoices;
 	private String answer;
+	private boolean solved;
 	
 	public Quiz() {
 		
@@ -37,5 +38,13 @@ public class Quiz {
 	
 	public String getAnswer() {
 		return answer;
+	}
+	
+	public void setSolved(boolean solved) {
+		this.solved = solved;
+	}
+	
+	public boolean getSolved() {
+		return solved;
 	}
 }
