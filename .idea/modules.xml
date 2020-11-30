@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/TourUmw.iml" filepath="$PROJECT_DIR$/TourUmw.iml" />
+=======
       <module fileurl="file://$PROJECT_DIR$/TourUMW2/TourUMW2.iml" filepath="$PROJECT_DIR$/TourUMW2/TourUMW2.iml" />
+>>>>>>> c046e00361f3ad5171a33f2d499dbb7a64f858f3
     </modules>
   </component>
 </project>
