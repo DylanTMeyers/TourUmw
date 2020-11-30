@@ -34,14 +34,16 @@ public class Item {
         transform = new ArrayList<Command>();
         disappear = new ArrayList<Command>();
         boolean alreadyHap = false;
+        boolean hitEnd = false;
         String command = "null";
         if (((s.hasNextLine())) && ((s.hasNext("\\+\\+\\+")) || (s.hasNext("Items:")))) {
             s.nextLine();
-            String line = s.nextLine();
-            if (line.equals("*****")) {
+            if (s.hasNext("\\*\\*\\*\\*\\*")) {
                 name = null;
+                hitEnd = true;
+    
             } else {
-                name = line;
+                name = s.nextLine();
 
 
                 String line2 = s.nextLine();
@@ -70,7 +72,7 @@ public class Item {
         }
         String[] StringArray;
 
-        while (s.hasNextLine() && !s.hasNext("\\+\\+\\+") && name != null) {
+        while (s.hasNextLine() && !s.hasNext("\\+\\+\\+") && name != null&& !hitEnd) {
             StringBuilder trans = new StringBuilder();
             StringBuilder halfCommand = new StringBuilder();
             if (!alreadyHap) {
