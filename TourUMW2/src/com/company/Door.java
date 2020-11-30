@@ -143,5 +143,9 @@ public class Door {
     public void setDirection(String dir) {
         direction = dir;
     }
+    public String toString(){
+        return leavingLocation + "\n" + direction+ "\n"+ enteringLocation;
+    }
+
 
 }

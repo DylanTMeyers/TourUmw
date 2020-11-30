@@ -5,22 +5,6 @@ Double Drive
 Welcome to the University of Mary Washington! You are 
 currently at the main entrance for the school.
 +++
-Combs Hall
-This building is the language hall. So basically it isnt
-worth anything at all.
-+++
-Randolph Hall
-This building is the hall that my friend Julian lived in.
-This is where he was caught for alc.
-+++
-Mason Hall
-This has a pool table where me and my friends use to play at
-several times
-+++
-Ball Circle
-Lots of people play football I never did much accept get on
-a ride that almost made me throw up.
-+++
 James Farmer Hall
 This building is named after Dr. James Farmer and houses 
 the Departments of Mathematics, Computer Science, CPR, 
@@ -83,22 +67,6 @@ n
 Bell Tower
 +++
 Bell Tower
-n
-Randolph Hall
-+++
-Randolph Hall
-s
-Bell Tower
-+++
-Randolph Hall
-e
-Mason Hall
-+++
-Mason Hall
-w
-Randolph Hall
-+++
-Bell Tower
 s
 Double Drive
 +++
@@ -148,14 +116,6 @@ Lee Hall
 +++
 Lee Hall
 s
-Campus Walk West
-+++
-Campus Walk West
-s
-Ball Circle
-+++
-Ball Circle
-n
 Campus Walk West
 +++
 Lee Hall
@@ -201,28 +161,25 @@ Simpson Library
 *****
 Items:
 coffee
-Katora Coffee
+Bell Tower
 The latte of the day is a black raspberry mocha.
+drink[Transform(emptyCoffee)]:Ahhhh
 +++
-Julians Virginity
-Randolph Hall
-Yeah its name was Thomas.
-+++
-My virginity
-Ball Circle
-Nah Im jk
-+++
-Suads sleeping bag
-Mason Hall
-Slept there quite often
+emptyCoffee
+none
+drink:You already enjoyed this coffee
+refill[Transform(coffee)]:More caffeine coming up
+recycle[Disappear]:Thank you for helping the environment!
 +++
 Pop Tart
 Katora Coffee
 Freshly made by Kickshaws. Vegan and gluten free!
+eat[Disappear]:Yummy!
 +++
 The Design of Everyday Things book
 Simpson Library
 The science of quality product design, why do we love some products, but are frustrated by others?
+read:Get your great mind working
 +++
 UMW baseball hat
 Bookstore
@@ -239,8 +196,9 @@ Enjoy reading!
 Linux laptop
 James Farmer Hall
 You can loan a linux laptop for your assignment this semester, and return it once you are done.
+open[Teleport]:Magically things can happen
 +++
-Scone
+scone
 Katora Coffee
 Today we are serving chocolate chip scones!
 +++

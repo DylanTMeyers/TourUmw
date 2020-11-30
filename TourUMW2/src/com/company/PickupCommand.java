@@ -37,7 +37,7 @@ public class PickupCommand implements UserInputCommand {
         Item i = tour.pickupItemFromLocation(itemName);
 
         if (i != null) {
-            pickedItem = "You got " + itemName + ": " + i.getMessage() + "\n\n";
+            pickedItem = "You got " + itemName + ": " + i.getMessage() +"\n\n"+ i.commandsActivation() + "\n\n";
 
         } else {
             pickedItem = "That item is not in this location (or you didn't enter an item).\n\n";

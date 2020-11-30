@@ -17,6 +17,7 @@ public class Campus {
     private HashMap<String, Location> locations;
     private Location startingLocation;
     private String filename;
+    private HashMap<String, Item> commandItems;
 
 
     /**
@@ -25,7 +26,7 @@ public class Campus {
      * @param filename String referring to filename
      */
     public Campus(String filename) {
-
+        commandItems = new HashMap<String, Item>();
         this.filename = filename;
         locations = new HashMap<String, Location>();
 
@@ -70,8 +71,10 @@ public class Campus {
                         if (!line5.equals("*****")) {
                             String line6 = myReader.nextLine();
                             String line7 = myReader.nextLine();
-
+                            System.out.println("Door:");
                             Door newDoor = new Door(line6, getLocation(line5), getLocation(line7));
+                            System.out.println(newDoor+ "\n");
+
                             addDoorsToLocation(newDoor);
 
                             line4 = myReader.nextLine();
@@ -81,24 +84,19 @@ public class Campus {
                         }
                     }
 
-                    String line8 = myReader.nextLine();
-
-                    while (!line8.equals("*****")) {
-
-                        String line9 = myReader.nextLine();
-                        if (!line9.equals("*****")) {
-                            String line10 = myReader.nextLine();
-                            String line11 = myReader.nextLine();
-
-                            Item newItem = new Item(line9, line10, line11);
-                            addItemsToLocation(newItem);
-
-                            line8 = myReader.nextLine();
-
-                        } else {
+                    while(myReader.hasNextLine()){// creates and adds the doors to the arraylist
+                        System.out.println("Item");
+                        Item item = new Item(myReader);
+                        if(item.getName() == null){
                             break;
                         }
+                        if(item.getStartLocation().equals("none")){
+                            commandItems.put(item.getName(),item);
+                        }
+                        System.out.println(item);
+                        addItemsToLocation(item);
                     }
+
 
                 } else {
                     System.out.println();
@@ -145,6 +143,16 @@ public class Campus {
      */
     public Location getLocation(String name) {
         return locations.get(name);
+    }
+    public void addCommand(Item item){
+        commandItems.put(item.getName(),item);
+    }
+
+    public Item getCommand(String name) {
+        return commandItems.get(name);
+    }
+    public void removeCommand(String key){
+        commandItems.remove(key);
     }
 
     /**

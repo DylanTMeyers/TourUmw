@@ -25,7 +25,7 @@ public class BackpackCommand implements UserInputCommand {
 
         TourStatus tour = TourStatus.getInstance();
 
-        String checkBP = "";
+        String checkBP;
 
         String s = tour.listBackpackItems();
 

@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -273,6 +274,9 @@ public class Location {
     public ArrayList<Item> getLocationsItemsArray() {
         return items;
     }
-
+    public String toString(){
+        return name + "\n" + description;
+    }
 }
+
 

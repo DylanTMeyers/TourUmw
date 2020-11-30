@@ -204,7 +204,9 @@ public class TourStatus {
 
             for (Item i : backpack) {
                 bpInventory = bpInventory + i.getName() + "\n";
+                bpInventory = bpInventory + i.commandsActivation();
             }
+
 
             return bpInventory;
 
@@ -212,5 +214,59 @@ public class TourStatus {
             return null;
         }
     }
+    public boolean backpackContains(String item){
+        boolean contains = false;
+        for (Item i : backpack) {
+            if(i.commandsActivation().contains(item)){
+                contains = true;
+            }
+        }
+        return contains;
+    }
+    public String itemsReplace(String command){
+        String msg ="";
+       for(int i= 0; i<backpack.size(); i++) {
+           if (backpack.get(i).transItem(command) != null){
+               if (backpack.get(i).transItem(command).getStartCommand().equals(command)) {
+                   msg = backpack.get(i).transItem(command).getMsg();
+                    Item l = backpack.get(i);
+                   backpack.set(i, campus.getCommand(backpack.get(i).transItem(command).getTrans()));
+                   campus.removeCommand(backpack.get(i).getName());
+                   campus.addCommand(l);
+               }
+               }
+       }
+       return msg;
+       }
+
+    public String itemRemove(String command){
+        String msg ="";
+        for(int i= 0; i<backpack.size(); i++) {
+            if (backpack.get(i).disItem(command) != null)
+                if (backpack.get(i).disItem(command).getStartCommand().equals(command)) {
+                    msg = backpack.get(i).disItem(command).getMsg();
+                    backpack.remove(backpack.get(i));
+                }
+        }
+        return msg;
+        }
+        public String commandMsg(String command){
+            for (Item item : backpack) {
+                if (item.disItem(command) != null) {
+                    if (item.disItem(command).getStartCommand().equals(command)) {
+                        return item.disItem(command).getMsg();
+                    }
+                }
+            }
+            for (Item item : backpack) {
+                if (item.transItem(command) != null){
+                    if (item.transItem(command).getStartCommand().equals(command)) {
+                        return item.transItem(command).getMsg();
+                    }
+                    }
+            }
+            return"no message";
+        }
+
 
 }

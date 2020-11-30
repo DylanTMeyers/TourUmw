@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,8 @@ public class Item {
     private String startLocation;
     private String message;
     private String itemCommand;
+    private ArrayList<Command> transform;
+    private ArrayList<Command> disappear;
 
 
     /**
@@ -28,46 +31,119 @@ public class Item {
      * @param s Scanner that reads in a file and assigns values to fields
      */
     public Item(Scanner s) {
-
-        String line4 = s.nextLine();
-        String command;
-        while (((s.hasNextLine())) && (!line4.equals("+++"))) {
-
+        transform = new ArrayList<Command>();
+        disappear = new ArrayList<Command>();
+        boolean alreadyHap = false;
+        String command = "null";
+        if (((s.hasNextLine())) && ((s.hasNext("\\+\\+\\+")) || (s.hasNext("Items:")))) {
+            s.nextLine();
             String line = s.nextLine();
+            if (line.equals("*****")) {
+                name = null;
+            } else {
                 name = line;
 
 
+                String line2 = s.nextLine();
+                if (!line2.contains("[") && !line2.contains(":")) {
+                    startLocation = line2;
+                } else {
+                    command = line2;
+                    startLocation = "none";
+                    alreadyHap = true;
+                    message = "none";
 
-            String line2 = s.nextLine();
-            if(!line2.contains("[") && !line2.contains(":")){
-                startLocation = line2;
-            }
-            else{
-                command = line2;
-                startLocation = "none";
-                message = "none";
-                break;
-            }
+                }
 
 
-            String line3 = s.nextLine();
-            if(!line3.contains("[") && !line3.contains(":")){
-           message = line3;
-            }
-            else{
-                command = line3;
-            message = "none";
-            break;
-            }
+                String line3 = s.nextLine();
+                if (!line3.contains("[") && !line3.contains(":")) {
+                    message = line3;
+                } else {
+                    command = line3;
+                    alreadyHap = true;
+                    message = "none";
 
+                }
+
+            }
+        }
+        String[] StringArray;
+
+        while (s.hasNextLine() && !s.hasNext("\\+\\+\\+") && name != null) {
+            StringBuilder trans = new StringBuilder();
+            StringBuilder halfCommand = new StringBuilder();
+            if (!alreadyHap) {
+                command = s.nextLine();
+                if (command.equals("+++")) {
+                    break;
+                }
+                itemCommand = command;
+            }
+            StringArray = command.split(":");
+            if (StringArray[0].contains("[")) {
+
+                boolean notYet = false;
+                for (int i = 0; i < StringArray[0].length(); i++) {
+                    if(notYet) {
+                        if(StringArray[0].charAt(i) == ']' || StringArray[0].charAt(i) == '('){
+                            break;
+                        }
+                        halfCommand.append(StringArray[0].charAt(i));
+                    }
+                    if (StringArray[0].charAt(i) == '[') {
+                        notYet = true;
+
+                    }
+                }
+            }
+            if (StringArray[0].contains("(")) {
+
+                boolean yet = false;
+                for (int i = 0; i < StringArray[0].length(); i++) {
+                    if(yet){
+                        if(StringArray[0].charAt(i) == ')') {
+                            break;
+                        }
+                        trans.append(StringArray[0].charAt(i));
+                        } if (StringArray[0].charAt(i) == '(') {
+                        yet = true;
+
+                    }
+                }
+            }
+            String action;
+            String[] Array;
+            if(!StringArray[0].contains("(") && !StringArray[0].contains("[")){
+                action = StringArray[0];
+            }
+            else {
+                Array = StringArray[0].split("\\[");
+                action = Array[0];
+            }
+            switch (halfCommand.toString()) {
+                case "Transform":
+                    Command transformCommand = new Command(new Transform(halfCommand.toString(), trans.toString(), StringArray[1], action,getName()));
+                    transform.add(transformCommand);
+                    break;
+                case "Disappear":
+                    Command disappearCommand = new Command(new Disappear(halfCommand.toString(), trans.toString(), StringArray[1],action,getName()));
+                    disappear.add(disappearCommand);
+                    break;
+                case "Teleport":
+
+                    break;
+            }
+            alreadyHap = false;
 
         }
-        String line5 = s.nextLine();
-        while (((s.hasNextLine())) && (!line5.equals("+++"))) {
-
-        }
-
     }
+
+
+
+
+
+
 
     /**
      * Non-default constructor for objects of class Item.
@@ -136,5 +212,38 @@ public class Item {
     public void setStartLocation(String sL) {
         startLocation = sL;
     }
+    public String toString(){
+        return name + "\n" + startLocation+ "\n"+ message + "\n" +itemCommand;
+    }
+    public String commandsActivation(){
+        StringBuilder list = new StringBuilder();
+        for(Command command:transform){
+            list.append(command.questions()).append("\n");
+        }
+        for(Command command: disappear){
+            list.append(command.questions()).append("\n");
+        }
+return(list.toString());
+    }
+    public Command transItem(String command){
+        Command n = null;
+        for(Command l: transform){
+            if(l.getStartCommand().equals(command)){
+                n = l;
+            }
+        }
+        return n;
+    }
+    public Command disItem(String command){
+        Command n = null;
+        for(Command l: disappear){
+            if(l.getStartCommand().equals(command)){
+                n = l;
+            }
+        }
+        return n;
+
+    }
+
 
 }

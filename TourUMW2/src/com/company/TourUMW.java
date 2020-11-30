@@ -53,6 +53,7 @@ public class TourUMW {
      * @return Object created in response to the user's input
      */
     public static UserInputCommand promptUser(Scanner input) throws FileNotFoundException {
+        TourStatus tour = TourStatus.getInstance();
 
         System.out.println("Enter a direction, pickup or drop an item, check your backpack or quit:");
         String userInput = input.next();
@@ -69,6 +70,9 @@ public class TourUMW {
             userInput = isItem.trim();
 
             return new PickupCommand(userInput);
+
+        }else if(tour.backpackContains(userInput)){
+            return new ItemCommands(userInput);
 
         } else if ((((userInput.equals("drop")) || (userInput.equals("d")))) && (isItem != null)) {
 
