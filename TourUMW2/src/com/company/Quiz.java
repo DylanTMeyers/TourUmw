@@ -1,6 +1,9 @@
 package com.company;
+
+import java.util.Scanner;
+
 /**
- * This class holds the information for the quizes throughout the 
+ * This class holds the information for the quizzes throughout the 
  * tour.
  * 
  * @author Justin Daniels
@@ -10,10 +13,28 @@ public class Quiz {
 	private String question;
 	private String answerChoices;
 	private String answer;
+	private Location quizLocation;
+	private Item quizItem;
 	private boolean solved;
 	
-	public Quiz() {
-		
+	public Quiz(Scanner s, Campus c) {
+		this.answerChoices = "";
+		this.question = "";
+		this.quizLocation = c.getLocation(s.nextLine());
+		if (this.quizLocation != null) {
+			this.quizItem = quizLocation.getItemNamed(s.nextLine());;
+			String line = s.nextLine();
+			while (line.charAt(0) != 'a') {
+				this.question = question + line + "\n";
+				line = s.nextLine();			
+			}
+			while (line.length() != 1) {
+				this.answerChoices = answerChoices + line + "\n";
+				line = s.nextLine();
+			}
+			this.answer = line;
+			this.quizItem.setItemQuiz(this);
+		}
 	}
 	
 	public void setQuestion(String question) {
@@ -46,5 +67,33 @@ public class Quiz {
 	
 	public boolean getSolved() {
 		return solved;
+	}
+	
+	public void setQuizLocation(Location l) {
+		this.quizLocation = l;
+	}
+	
+	public Location getQuizLocation() {
+		return this.quizLocation;
+	}
+	
+	public boolean quizStudent() {
+		if (this.solved == false) {
+			Scanner s = new Scanner(System.in);
+			System.out.println(this.question + "\n" + this.answerChoices);
+			System.out.print("Type the letter of your answer: ");
+			String answer = s.next();
+			
+			
+			if (answer.toLowerCase().equals(this.answer)) {
+				this.solved = true;
+				return true;
+			}
+			return false;
+		}
+		else {
+			return true;
+		}
+		
 	}
 }

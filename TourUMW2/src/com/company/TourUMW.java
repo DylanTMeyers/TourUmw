@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class TourUMW {
-
+	private static boolean backpackOpen;
     public static void main(String[] args) throws FileNotFoundException {
 
         Scanner stdin = new Scanner(System.in);
@@ -55,32 +55,64 @@ public class TourUMW {
     public static UserInputCommand promptUser(Scanner input) throws FileNotFoundException {
         TourStatus tour = TourStatus.getInstance();
 
+        System.out.println(Distance.getInstance().getStatus());
         System.out.println("Enter a direction, pickup or drop an item, check your backpack or quit:");
-        String userInput = input.next();
+        String userInput = input.nextLine();
 
-        String isItem = input.nextLine();
+        //String isItem = input.nextLine();
+        
+        String[] inputArray = userInput.split(" ");
+        
+        String isItem = "";
+        String itemFirst = "";
+        
+        if (inputArray.length > 1) {
+        	for (int i = 1; i < inputArray.length; i++) {
+        		if (i == inputArray.length - 1) {
+        			isItem = isItem + inputArray[i];
+        		}
+        		else {
+        			isItem = isItem + inputArray[i] + " ";
+        		}
+        		
+        	}
+        	for (int i = inputArray.length - 2; i > -1; i--) {
+        		if (i == 0) {
+        			itemFirst = inputArray[i] + itemFirst;
+        		}
+        		else {
+        			itemFirst = " " + inputArray[i] + itemFirst;
+        		}
+        		 
+        	}
+        }
 
         System.out.println();
+       
 
-        if ((userInput.equals("n")) || (userInput.equals("s")) || (userInput.equals("e")) || (userInput.equals("w"))) {
+        if ((inputArray[0].equals("n")) || (inputArray[0].equals("s")) || (inputArray[0].equals("e")) || (inputArray[0].equals("w"))) {
+        	backpackOpen = false;
             return new MovementCommand(userInput);
 
-        } else if ((((userInput.equals("pickup")) || (userInput.equals("p")))) && (isItem != null)) {
+        } else if ((((inputArray[0].equals("pickup")) || (inputArray[0].equals("p")))) && (isItem != null)) {
+        	backpackOpen = false;
 
-            userInput = isItem.trim();
+            return new PickupCommand(isItem);
 
-            return new PickupCommand(userInput);
-
-        }else if(tour.backpackContains(userInput)){
+        } else if (backpackOpen == true && inputArray[inputArray.length - 1].equals("quiz") && tour.getBackpackItem(itemFirst) != null && tour.getBackpackItem(itemFirst).getItemQuiz() != null) {
+        	return new QuizCommand(itemFirst);
+        	
+        } else if(tour.backpackContains(userInput)){
+        	backpackOpen = false;
             return new ItemCommands(userInput);
 
-        } else if ((((userInput.equals("drop")) || (userInput.equals("d")))) && (isItem != null)) {
+        } else if ((((inputArray[0].equals("drop")) || (inputArray[0].equals("d")))) && (isItem != null)) {
+        	backpackOpen = false;
 
-            userInput = isItem.trim();
-
-            return new DropCommand(userInput);
+            return new DropCommand(isItem);
 
         } else if ((userInput.equals("backpack")) || (userInput.equals("b"))) {
+        	backpackOpen = true;
             return new BackpackCommand();
 
         } else if (userInput.equals("q")) {

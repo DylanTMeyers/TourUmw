@@ -205,6 +205,9 @@ public class TourStatus {
             for (Item i : backpack) {
                 bpInventory = bpInventory + i.getName() + "\n";
                 bpInventory = bpInventory + i.commandsActivation();
+                if (i.getItemQuiz() != null) {
+                	bpInventory = bpInventory + "   Type '" + i.getName() + " quiz' to take quiz\n";
+                }
             }
 
 
@@ -267,6 +270,17 @@ public class TourStatus {
             }
             return"no message";
         }
+        public ArrayList<Item> getBackpack() {
+        	return backpack;
+        }
 
+        public Item getBackpackItem(String itemName) {
+        	for (Item i: backpack) {
+        		if (i.getName().equals(itemName)) {
+        			return i;
+        		}
+        	}
+        	return null;
+        }
 
 }
