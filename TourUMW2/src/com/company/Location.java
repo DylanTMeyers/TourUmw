@@ -18,6 +18,7 @@ public class Location {
     private boolean isOutside;
     private ArrayList<Door> doors;
     private ArrayList<Item> items;
+    private Person person;
 
 
     /**
@@ -276,6 +277,12 @@ public class Location {
     }
     public String toString(){
         return name + "\n" + description;
+    }
+    public void setPerson(Person person) {
+    	this.person = person;
+    }
+    public Person getPerson() {
+    	return person;
     }
 }
 

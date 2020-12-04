@@ -44,12 +44,22 @@ public class MovementCommand implements UserInputCommand {
                     tour.getCurrentLocation().getDescription() + "\n \n" +
                     tour.getCurrentLocation().getDoors() + "\n" +
                     tour.getCurrentLocation().getItemsInLocation() + "\n";
+            
+            if (tour.getCurrentLocation().getPerson() != null) {
+            	movementResult = movementResult + tour.getCurrentLocation().getPerson().getName() + "\n" +
+            				"     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n";
+            }
+            		
 
         } else if ((tour.getCurrentLocation().getHaveVisited()) && (tour.getCanGo())) {
 
             movementResult = "Current location: " + tour.getCurrentLocation().getName() + "\n\n" +
                     tour.getCurrentLocation().getDoors() + "\n" +
                     tour.getCurrentLocation().getItemsInLocation() + "\n";
+            if (tour.getCurrentLocation().getPerson() != null) {
+            	movementResult = movementResult + tour.getCurrentLocation().getPerson().getName() + "\n" +
+            				"     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n";
+            }
 
         } else {
 

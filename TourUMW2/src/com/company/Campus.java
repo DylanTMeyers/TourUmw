@@ -109,6 +109,18 @@ public class Campus {
                 	   }
                    }
                    
+                   myReader.nextLine();
+                   myReader.nextLine();
+                   
+                   while(myReader.hasNextLine()) {
+                	   Person person = new Person(myReader, this);
+                	   if (person.getLocation() == null) {
+                		   break;
+                	   }
+                   }
+                   
+                   break;
+                   
                     
                 } else {
                     System.out.println();

@@ -216,7 +216,20 @@ b
 +++
 *****
 People:
-Bell Tower
+Double Drive
 President Paino
-Hi future eagle! Welcome to UMW!
-Choice 1: Ask about 
+Hi future eagle! Welcome to UMW! I am Troy Paino, the president of this university.
+Choice 1: Ask about status
+What does Eaglet Status mean?
+How observant of you! Eaglet Status is the first
+level of your UMW tour. As you travel to different
+locations and take quizzes, you will get points towards
+the next level.
+Choice 2: Ask about the tour
+How does this tour work?
+To travel around the campus you can simply type the direction
+you wish to go: n for north, e for east, s for south, and w for west.
+---
+Have fun exploring our campus!
++++
+*****

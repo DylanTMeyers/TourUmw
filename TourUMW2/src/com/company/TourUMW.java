@@ -31,6 +31,10 @@ public class TourUMW {
         System.out.println(tour.getCurrentLocation().getDoors());
         System.out.println(tour.getCurrentLocation().getItemsInLocation());
         System.out.println();
+        if (tour.getCurrentLocation().getPerson() != null) {
+        	System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" + 
+        			"     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
+        }
 
         UserInputCommand command = promptUser(stdin);
 
@@ -99,7 +103,10 @@ public class TourUMW {
 
             return new PickupCommand(isItem);
 
-        } else if (backpackOpen == true && inputArray[inputArray.length - 1].equals("quiz") && tour.getBackpackItem(itemFirst) != null && tour.getBackpackItem(itemFirst).getItemQuiz() != null) {
+        } else if ((inputArray[0].equals("talk") || inputArray[0].equals("t")) && tour.getCurrentLocation().getPerson() != null) {
+        	return new TalkCommand(tour.getCurrentLocation().getPerson());
+        }
+        else if (backpackOpen == true && inputArray[inputArray.length - 1].equals("quiz") && tour.getBackpackItem(itemFirst) != null && tour.getBackpackItem(itemFirst).getItemQuiz() != null) {
         	return new QuizCommand(itemFirst);
         	
         } else if(tour.backpackContains(userInput)){
