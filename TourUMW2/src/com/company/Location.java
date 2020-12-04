@@ -18,6 +18,7 @@ public class Location {
     private boolean isOutside;
     private ArrayList<Door> doors;
     private ArrayList<Item> items;
+    private Baseball baseball;
 
 
     /**

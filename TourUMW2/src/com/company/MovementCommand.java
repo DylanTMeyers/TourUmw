@@ -27,8 +27,9 @@ public class MovementCommand implements UserInputCommand {
      * including the Location's name, description, doors and items.
      *
      * @return String listing the Location's name, description, doors and items
+     * @throws InterruptedException 
      */
-    public String carryOut() {
+    public String carryOut() throws InterruptedException {
 
         TourStatus tour = TourStatus.getInstance();
 
@@ -56,6 +57,7 @@ public class MovementCommand implements UserInputCommand {
             movementResult = "You can't go that way.\n\n" +
                     tour.getCurrentLocation().getDoors() + "\n";
         }
+
 
         return movementResult;
     }
