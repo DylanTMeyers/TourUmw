@@ -14,7 +14,8 @@ public interface UserInputCommand {
      * and updates the tour status of the tour if needed.
      *
      * @return String providing a message in response to a user command
+     * @throws InterruptedException 
      */
-    public String carryOut();
+    public String carryOut() throws InterruptedException;
 
 }

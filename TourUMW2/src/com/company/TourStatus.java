@@ -253,6 +253,20 @@ public class TourStatus {
         }
         return msg;
         }
+    public String teleport(String location){
+        String msg = null;
+        for(int i= 0; i<backpack.size(); i++) {
+        		if(backpack.get(i).getName().equals("Linux laptop") ) {
+        	        msg = backpack.get(i).teleItem().getMsg();
+        	        msg = msg + "\nYou are now at "+location;
+        	        TourStatus.getInstance().setCurrentLocation(TourStatus.getInstance().getCampus().getLocation(location));
+                }
+        }
+        if(campus.getLocation(location) == null) {
+        	msg = "This Location does not exist on campus";
+        }
+        return msg;
+        }
         public String commandMsg(String command){
             for (Item item : backpack) {
                 if (item.disItem(command) != null) {
@@ -269,6 +283,7 @@ public class TourStatus {
                     }
             }
             return"no message";
+
         }
         public ArrayList<Item> getBackpack() {
         	return backpack;
@@ -283,4 +298,9 @@ public class TourStatus {
         	return null;
         }
 
+
+        }
+        public Baseball play() {
+        	return new Baseball();
+        }
 }

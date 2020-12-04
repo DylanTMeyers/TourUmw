@@ -19,6 +19,8 @@ public class Location {
     private ArrayList<Door> doors;
     private ArrayList<Item> items;
     private Person person;
+    private Baseball baseball;
+
 
 
     /**
