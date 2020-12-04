@@ -15,6 +15,7 @@ public class Item {
     private String startLocation;
     private String message;
     private String itemCommand;
+    private Quiz itemQuiz;
     private ArrayList<Command> transform;
     private ArrayList<Command> disappear;
     private Command teleport;
@@ -250,8 +251,19 @@ return(list.toString());
         }
         return n;
     }
+
+
+    public void setItemQuiz(Quiz quiz) {
+    	this.itemQuiz = quiz;
+    }
+    
+    public Quiz getItemQuiz() {
+    	return itemQuiz;
+    }
+
     public Command teleItem(){
     	return teleport;
     }
+
 
 }

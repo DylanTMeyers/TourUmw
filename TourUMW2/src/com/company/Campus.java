@@ -36,6 +36,7 @@ public class Campus {
 
             while (myReader.hasNextLine() && !finished) {
 
+
                 String line = myReader.nextLine();
                 campusName = line;
 
@@ -83,7 +84,7 @@ public class Campus {
                             break;
                         }
                     }
-                
+
                     while(myReader.hasNextLine()){// creates and adds the doors to the arraylist
                         System.out.println("Item");
                         Item item = new Item(myReader);
@@ -96,9 +97,32 @@ public class Campus {
                         }
                         System.out.println(item);
                         addItemsToLocation(item);
+                        
                     }
-
-
+                   
+                    myReader.nextLine();
+                    myReader.nextLine();
+                    
+                   while(myReader.hasNextLine()) { //reads in quizzes
+                	   Quiz newQuiz = new Quiz(myReader, this);
+                	   if (newQuiz.getQuizLocation() == null) {
+                		   break;
+                	   }
+                   }
+                   
+                   myReader.nextLine();
+                   myReader.nextLine();
+                   
+                   while(myReader.hasNextLine()) {
+                	   Person person = new Person(myReader, this);
+                	   if (person.getLocation() == null) {
+                		   break;
+                	   }
+                   }
+                   
+                   break;
+                   
+                    
                 } else {
                     System.out.println();
                     System.out.println("The file is not the right format.");
