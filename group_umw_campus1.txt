@@ -209,7 +209,7 @@ Linux laptop
 What does x equal in the following equation?
 (3x + 3)/3 = 9
 a. 2
-b. 3
+b. 8
 c. 5
 d. 1
 b
