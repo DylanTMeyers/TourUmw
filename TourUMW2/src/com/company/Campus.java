@@ -109,8 +109,8 @@ public class Campus {
                 	   }
                    }
                    
-                   myReader.nextLine();
-                   myReader.nextLine();
+                   String random = myReader.nextLine();
+                  
                    
                    while(myReader.hasNextLine()) {
                 	   Person person = new Person(myReader, this);
