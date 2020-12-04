@@ -12,8 +12,11 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class TourUMW {
+
 	private static boolean backpackOpen;
-    public static void main(String[] args) throws FileNotFoundException {
+
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
+
 
         Scanner stdin = new Scanner(System.in);
 
@@ -36,12 +39,20 @@ public class TourUMW {
         			"     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
         }
 
+
         UserInputCommand command = promptUser(stdin);
 
 
         while (command != null) {
 
+
             System.out.println(command.carryOut());
+            if(tour.getCurrentLocation().getName().equals("Sports Fields")) {
+                System.out.print("Would you like to play baseball? (If so type yes)");
+                String Yes = stdin.next();
+                if(Yes.toLowerCase().equals("yes"))
+            	tour.play().letsPlay();
+            }
 
             command = promptUser(stdin);
         }
@@ -117,6 +128,18 @@ public class TourUMW {
         	backpackOpen = false;
 
             return new DropCommand(isItem);
+
+        }else if(userInput.equals("Teleport")&& (isItem != null)) {
+            userInput = isItem.trim();
+        return new TeleportCommand(userInput);
+        }else if(tour.backpackContains(userInput)){
+            return new ItemCommands(userInput);
+
+        } else if ((((userInput.equals("drop")) || (userInput.equals("d")))) && (isItem != null)) {
+
+            userInput = isItem.trim();
+            return new DropCommand(userInput);
+
 
         } else if ((userInput.equals("backpack")) || (userInput.equals("b"))) {
         	backpackOpen = true;
