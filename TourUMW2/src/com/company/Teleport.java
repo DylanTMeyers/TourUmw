@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Teleport implements ItemCommands {
+public class Teleport implements UserInputCommand {
     private String locationName;
     private ArrayList<Item> itemsThatCanComplete;
 
@@ -10,9 +10,11 @@ public class Teleport implements ItemCommands {
         this.locationName = locationName;
         itemsThatCanComplete = new ArrayList<>();
     }
-    public String completeAction() {
+   
+    public String carryout() {
 
         TourStatus.getInstance().setCurrentLocation(TourStatus.getInstance().getCampus().getLocation(locationName));
         return TourStatus.getInstance().getCurrentLocation().getName();
     }
+	
 }
