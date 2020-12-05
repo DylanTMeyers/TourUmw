@@ -32,6 +32,7 @@ public class Quiz {
 				this.answerChoices = answerChoices + line + "\n";
 				line = s.nextLine();
 			}
+			s.nextLine();
 			this.answer = line;
 			this.quizItem.setItemQuiz(this);
 		}

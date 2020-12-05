@@ -44,6 +44,7 @@ public class Person {
 			}
 			
 			this.goodbyeMessage = s.nextLine();
+			s.nextLine();
 			
 			location.setPerson(this);
 		}
@@ -57,16 +58,16 @@ public class Person {
 		System.out.println(welcomeText);
 		
 		while (!(option.equals("bye"))) {
-			System.out.println("Dialogue Options: \n     " + choiceOne + "\n     " + choiceTwo + "\n    Type 'bye' to end dialogue.");
+			System.out.println("Dialogue Options: \n     " + choiceOne + "\n     " + choiceTwo + "\n     Type 'bye' to end dialogue.");
 			System.out.println("Which option do you choose? ");
 			
 			option = s.nextLine();
 			System.out.println();
 			
-			if (option.toLowerCase().equals("choice 1")) {
+			if (option.toLowerCase().equals("choice 1") || option.equals("1")) {
 				System.out.println("You: " + youTextOne + "\n" + name + ": " + personTextOne);
 			}
-			else if (option.toLowerCase().equals("choice 2")) {
+			else if (option.toLowerCase().equals("choice 2") || option.equals("2")) {
 				System.out.println("You: " + youTextTwo + "\n" + name + ": " + personTextTwo);
 			}
 			else if (!(option.equals("bye"))) {
@@ -82,5 +83,9 @@ public class Person {
 	}
 	public Location getLocation() {
 		return location;
+	}
+
+	public static void main(String[] args) {
+		C:\Users\justi\git\TourUmw\group_umw_campus1.txt
 	}
 }

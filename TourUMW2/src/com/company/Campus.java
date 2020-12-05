@@ -29,18 +29,17 @@ public class Campus {
         commandItems = new HashMap<String, Item>();
         this.filename = filename;
         locations = new HashMap<String, Location>();
-        boolean finished = false;
+
         try {
             File myFile = new File(filename);
             Scanner myReader = new Scanner(myFile);
 
-            while (myReader.hasNextLine() && !finished) {
-
+             while (myReader.hasNextLine()) {
 
                 String line = myReader.nextLine();
                 campusName = line;
 
-               String line2 = myReader.nextLine();
+                String line2 = myReader.nextLine();
 
                 if (line2.equals("*****")) {
 
@@ -84,12 +83,12 @@ public class Campus {
                             break;
                         }
                     }
-
+                    
+                    
                     while(myReader.hasNextLine()){// creates and adds the doors to the arraylist
                         System.out.println("Item");
                         Item item = new Item(myReader);
                         if(item.getName() == null){
-                        	finished = true;
                             break;
                         }
                         if(item.getStartLocation().equals("none")){
@@ -110,8 +109,8 @@ public class Campus {
                 	   }
                    }
                    
-                   myReader.nextLine();
-                   myReader.nextLine();
+                   String random = myReader.nextLine();
+                  
                    
                    while(myReader.hasNextLine()) {
                 	   Person person = new Person(myReader, this);

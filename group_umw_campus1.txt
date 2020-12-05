@@ -202,17 +202,41 @@ scone
 Katora Coffee
 Today we are serving chocolate chip scones!
 +++
+Romeo and Juliet
+Simpson Library
+Enjoy Reading!
++++
 *****
 Quizzes:
 James Farmer Hall
 Linux laptop
 What does x equal in the following equation?
 (3x + 3)/3 = 9
-a. 2
+a. 3
 b. 8
 c. 5
 d. 1
 b
++++
+Simpson Library
+Romeo and Juliet
+How does Romeo die?
+(The Book)
+a. Stabs himself
+b. His heart gives out because it can not beat in a world without Juliet
+c. He poisons himself
+d. He slips in the shower
+c
++++
+Bookstore
+UMW hoodie
+Show off your knowledge of UMW!
+What are UMW's school colors?
+a. white and blue
+b. red and purple
+c. orange and grey
+d. grey and navy blue
+d
 +++
 *****
 People:
@@ -231,5 +255,37 @@ To travel around the campus you can simply type the direction
 you wish to go: n for north, e for east, s for south, and w for west.
 ---
 Have fun exploring our campus!
++++
+Katora Coffee
+Dean Rucker
+Hello, I'm Dean Rucker. I hope you are enjoying our little slice of paradice!
+Choice 1: Ask about the coffee
+Is the coffee good?
+The coffee is GREAT! Especially after late night study jams.
+Its also a great place to study and chill. :D
+Choice 2: Ask about the Weenie The Poo?
+I saw you in that Weenie the Poo costume, you must be a cool dude.
+hahaha, yes you might see me, on special occasions, dressed up
+in quite a few costumes.
+---
+Y'all enjoy the rest of your day
++++
+Campus Walk West
+Cool-looking student
+Hey! Are you a new student here? If you're still deciding on becoming an eagle, I can vouch for how great UMW is!
+Choice 1: Ask what the coolest thing about UMW is
+Hey! What's the coolest thing about UMW?
+The coolest thing? There's so many good things about UMW, though!
+But if I had to choose, I'd say the community. Everyone is
+welcoming here, and there's a ton of school spirit!
+Choice 2: Ask for food
+Do you have any food I can eat?
+What? I don't have any...
+Well, there's a couple places to eat on campus.
+My favorite place is Katora Coffee. Head west and go
+through the library to get there.
+(That reminds me, where did I put my coffee...?)
+---
+Hope to see you around!
 +++
 *****
