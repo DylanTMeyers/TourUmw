@@ -16,7 +16,7 @@ will say a goodbye message.
 
 Baseball:
 You can travel past Combes to the sports field. Here you will be prompted to watch a baseball
-game. A simulation of a baseball game will occur. After three innings, you will be prompted to
+game. A simulation of a baseball game will occur. After one inning, you will be prompted to
 cheer for a team. The team you cheer for will start to play better. If you want to leave the 
 game, just type 'leave' when you are prompted to at the end of an inning.
 
