@@ -76,10 +76,9 @@ public class Campus {
                         if (!line5.equals("*****")) {
                             String line6 = myReader.nextLine();
                             String line7 = myReader.nextLine();
-                            System.out.println("Door:");
+                            
                             Door newDoor = new Door(line6, getLocation(line5), getLocation(line7));
-                            System.out.println(newDoor+ "\n");
-
+                          
                             addDoorsToLocation(newDoor);
 
                             line4 = myReader.nextLine();
@@ -91,7 +90,7 @@ public class Campus {
                     
                     
                     while(myReader.hasNextLine()){// creates and adds the doors to the arraylist
-                        System.out.println("Item");
+                        
                         Item item = new Item(myReader);
                         if(item.getName() == null){
                             break;
@@ -99,7 +98,7 @@ public class Campus {
                         if(item.getStartLocation().equals("none")){
                             commandItems.put(item.getName(),item);
                         }
-                        System.out.println(item);
+                        
                         addItemsToLocation(item);
                         
                     }
