@@ -85,7 +85,4 @@ public class Person {
 		return location;
 	}
 
-	public static void main(String[] args) {
-		C:\Users\justi\git\TourUmw\group_umw_campus1.txt
-	}
 }
