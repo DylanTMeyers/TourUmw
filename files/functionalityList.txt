@@ -1,0 +1,26 @@
+Quizzes:
+To take a quiz you must pick up an item that has a quiz associated with it. 
+You will know that there is a quiz to go with an item when you open the backpack.
+Once you open the backpack you can type '(item name) quiz' and then the quiz will start.
+You then input the letter of the answer you choice. If the answer is right it will say 'Yay!'
+and then give you a point. If the answer is wrong it will say 'Sorry, try again.' If 
+you try to take a quiz again that you have already passed, it will tell you that you've 
+already passed.
+
+Talking to people:
+If there is a person at a location, then you can type 'talk' to talk to them. You will be 
+prompted to pick a dialogue option. You can either type 'Choice (number)' or just the number
+of the choice. The dialogue will then happen starting with what you say and then how the
+person responds. You will keep being prompted to talk until you type 'bye'. Then the person 
+will say a goodbye message.
+
+Baseball:
+You can travel past Combes to the sports field. Here you will be prompted to watch a baseball
+game. A simulation of a baseball game will occur. After three innings, you will be prompted to
+cheer for a team. The team you cheer for will start to play better. If you want to leave the 
+game, just type 'leave' when you are prompted to at the end of an inning.
+
+Status:
+As you tour the campus, a status is constantly shown above the input prompt. One point is added
+to your total points every time you move to a different location and every time you pass a quiz.
+Every five points you go up a level until you reach 'Platinum Eagle Status'.
