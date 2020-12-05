@@ -172,6 +172,14 @@ public class TourUMW {
 
             return new DropCommand(isItem);
 
+        } else if(inputArray[0].equals("Teleport")&& (isItem != null)) {
+       
+            if(inputArray.length == 2) {
+        	return new TeleportCommand(inputArray[1]);
+            }
+            else{
+            	return new TeleportCommand(inputArray[1]+ " " + inputArray[2]);
+	    }
         } else if ((userInput.equals("backpack")) || (userInput.equals("b"))) {
         	backpackOpen = true;
             return new BackpackCommand();
