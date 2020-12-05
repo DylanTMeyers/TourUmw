@@ -212,8 +212,8 @@ James Farmer Hall
 Linux laptop
 What does x equal in the following equation?
 (3x + 3)/3 = 9
-a. 2
-b. 3
+a. 3
+b. 8
 c. 5
 d. 1
 b
@@ -227,6 +227,16 @@ b. His heart gives out because it can not beat in a world without Juliet
 c. He poisons himself
 d. He slips in the shower
 c
++++
+Bookstore
+UMW hoodie
+Show off your knowledge of UMW!
+What are UMW's school colors?
+a. white and blue
+b. red and purple
+c. orange and grey
+d. grey and navy blue
+d
 +++
 *****
 People:
