@@ -32,7 +32,7 @@ public class InvalidCommand implements UserInputCommand {
         String invalidOption = "";
 
         invalidOption = invalidOption + invalidCommand + " is not a valid command.\n" +
-                "Commands: n, s, e, w, pickup/p, drop/d, backpack/b, q\n";
+                "Commands: n, s, e, w, pickup/p, drop/d, backpack/b, save, q\n";
 
         return invalidOption;
     }

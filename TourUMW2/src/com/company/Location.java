@@ -96,6 +96,91 @@ public class Location {
         doors = new ArrayList<Door>();
         items = new ArrayList<Item>();
     }
+    
+    /**
+     * Method that moves Items to different Locations according to a save file.
+     *
+     * @param nameOfItemInQuestion the Item to be moved
+     * @param locInFile the Location in the save file that is currently updating the status of
+     */
+    public void rearrangeItems(String nameOfItemInQuestion, Location locInFile) {
+
+        ArrayList<Item> toMove = new ArrayList<Item>();
+
+        for (Item i : items) {
+
+            if (((nameOfItemInQuestion.equals(i.getName()))) && (!locInFile.getName().equals(name))) {
+                i.setInSaveData(true);
+                toMove.add(i);
+
+            } else if (((nameOfItemInQuestion.equals(i.getName()))) && (locInFile.getName().equals(name))) {
+                i.setInSaveData(true);
+            }
+
+        }
+
+        items.removeAll(toMove);
+
+        for (Item x : toMove) {
+            locInFile.addMovedItem(x);
+        }
+
+    }
+
+
+    /**
+     * Method that moves Items to the user's backpack from different Locations according to a save file.
+     *
+     * @param nameOfItemInQuestion the Item to be moved
+     */
+    public void rearrangeItemsForBackpack(String nameOfItemInQuestion) {
+
+        TourStatus tour = TourStatus.getInstance();
+
+        ArrayList<Item> toMove = new ArrayList<Item>();
+
+        for (Item x : items) {
+            if (nameOfItemInQuestion.equals(x.getName())) {
+                toMove.add(x);
+            }
+        }
+
+        items.removeAll(toMove);
+
+        for (Item y : toMove) {
+            tour.addToBackpack(y);
+        }
+
+    }
+    
+    /**
+     * Method that adds an Item to the items ArrayList for a Location.
+     *
+     * @param item Item that is to be added to the ArrayList
+     */
+    public void addMovedItem(Item item) { //for rearranging items - save file
+        items.add(item);
+    }
+    
+    /**
+     * Method that lists all Items in a Location, separated by commas.
+     *
+     * @return a String listing all Items in a Location, separated by commas
+     */
+    public String getListOfItems() {
+        String itemList = "";
+
+        for (int i = 0; i < items.size(); i++) {
+
+            if (i <= items.size()-2) {
+                itemList = itemList + items.get(i).getName() + ",";
+
+            } else {
+                itemList = itemList + items.get(i).getName();
+            }
+        }
+        return itemList;
+    }
 
 
     /**

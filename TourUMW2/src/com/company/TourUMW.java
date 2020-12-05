@@ -1,4 +1,5 @@
 package com.company;
+import java.io.File;
 //gee hope this works
 //BLAH BLOOP
 //Please tell me this works
@@ -14,37 +15,90 @@ import java.util.Scanner;
 public class TourUMW {
 	private static boolean backpackOpen;
     public static void main(String[] args) throws FileNotFoundException {
+    	Scanner stdin = new Scanner(System.in);
 
-        Scanner stdin = new Scanner(System.in);
-
-        Campus c = setUpCampus(stdin);
-        TourStatus tour = TourStatus.getInstance();
-
-        tour.setCampus(c);
-        tour.setCurrentLocation(c.getStartLocation());
-        tour.getCurrentLocation().setHaveVisited(true);
-
+        System.out.println("Do you have tour save data you wish to load? Type 'r or 'restore' to load a file," +
+                "or press any other key to start a new tour.");
+        String selectData = stdin.next();
+        stdin.nextLine();
         System.out.println();
-        System.out.println("Current location: " + c.getStartLocation().getName());
-        System.out.println(c.getStartLocation().getDescription());
-        System.out.println();
-        System.out.println(tour.getCurrentLocation().getDoors());
-        System.out.println(tour.getCurrentLocation().getItemsInLocation());
-        System.out.println();
-        if (tour.getCurrentLocation().getPerson() != null) {
-        	System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" + 
-        			"     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
-        }
 
-        UserInputCommand command = promptUser(stdin);
+            if ((selectData.equals("r")) || (selectData.equals("restore"))) {
+
+                System.out.println("What is the name of your save file?");
+                String userFile = stdin.nextLine();
+                userFile = userFile + ".txt";
+
+                Campus camp = updateCampus(userFile);
+                TourStatus tour = TourStatus.getInstance();
+                tour.setCampus(camp);
+                tour.setCurrentLocation(tour.getCampus().getCurrentLocInTour());
+
+                System.out.println();
+                System.out.println("Current location: " + tour.getCurrentLocation().getName());
+                System.out.println(tour.getCurrentLocation().getDescription());
+                System.out.println();
+                System.out.println(tour.getCurrentLocation().getDoors());
+                System.out.println(tour.getCurrentLocation().getItemsInLocation());
+                System.out.println();
+
+                if (tour.getCurrentLocation().getPerson() != null) {
+                    System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" +
+                            "     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
+                }
 
 
-        while (command != null) {
+                UserInputCommand command = promptUser(stdin);
 
-            System.out.println(command.carryOut());
+                while (command != null) {
 
-            command = promptUser(stdin);
-        }
+                    System.out.println(command.carryOut());
+
+                    if (tour.getCurrentLocation().getPerson() != null) {
+                        System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" +
+                                "     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
+                    }
+
+                    command = promptUser(stdin);
+                }
+
+            } else {   //group_umw_campus1.txt
+
+                Campus c = setUpCampus(stdin);
+
+                TourStatus tour = TourStatus.getInstance();
+
+                tour.setCampus(c);
+                tour.setCurrentLocation(c.getStartLocation());
+                tour.getCurrentLocation().setHaveVisited(true);
+
+                System.out.println();
+                System.out.println("Current location: " + c.getStartLocation().getName());
+                System.out.println(c.getStartLocation().getDescription());
+                System.out.println();
+                System.out.println(tour.getCurrentLocation().getDoors());
+                System.out.println(tour.getCurrentLocation().getItemsInLocation());
+                System.out.println();
+
+                if (tour.getCurrentLocation().getPerson() != null) {
+                    System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" +
+                            "     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
+                }
+
+                UserInputCommand command = promptUser(stdin);
+
+                while (command != null) {
+
+                    System.out.println(command.carryOut());
+
+                    if (tour.getCurrentLocation().getPerson() != null) {
+                        System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" +
+                                "     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
+                    }
+
+                    command = promptUser(stdin);
+                }
+            }
 
         stdin.close();
     }
@@ -122,6 +176,16 @@ public class TourUMW {
         	backpackOpen = true;
             return new BackpackCommand();
 
+        } else if (userInput.equals("save")) {
+
+            System.out.println("Enter the name of the file that will be used to save your tour data:");
+            String saveFileName = input.nextLine();
+            saveFileName = saveFileName + ".txt";
+
+            System.out.println();
+
+            return new SaveDataCommand(saveFileName);
+
         } else if (userInput.equals("q")) {
             return null;
 
@@ -143,6 +207,45 @@ public class TourUMW {
         Campus campus = new Campus(fileName);
 
         return campus;
+    }
+    
+    /**
+     * Method that reads in a save file and uses that data to set up a campus object.
+     *
+     * @param saveFile the name of that save file that will be used
+     * @return created Campus object
+     */
+    public static Campus updateCampus(String saveFile) {
+
+        Campus c = null;
+
+        try {
+            File file = new File(saveFile);
+            Scanner myReader = new Scanner(file);
+
+            while (myReader.hasNextLine()) {
+
+                myReader.nextLine();
+                String l2 = myReader.nextLine();
+
+                String[] dataFileName = l2.split(":");
+                String fileName = dataFileName[dataFileName.length - 1];
+
+                c = new Campus(fileName);
+                c.setFilename(fileName);
+
+                c.readAndUpdateCampus(myReader);
+
+            }
+            myReader.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println();
+            System.out.println("The file wasn't found.");
+            e.printStackTrace();
+        }
+
+        return c;
     }
 
 }

@@ -18,6 +18,7 @@ public class Item {
     private Quiz itemQuiz;
     private ArrayList<Command> transform;
     private ArrayList<Command> disappear;
+    private boolean inSaveData;
 
 
     /**
@@ -254,5 +255,23 @@ return(list.toString());
     
     public Quiz getItemQuiz() {
     	return itemQuiz;
+    }
+    
+    /**
+     * Accessor method for the inSaveData field.
+     *
+     * @return the value of the inSaveData field
+     */
+    public boolean getInSaveData() {
+        return inSaveData;
+    }
+
+    /**
+     * Mutator method for the startLocation field.
+     *
+     * @param b boolean for whether or not an Item in a save file
+     */
+    public void setInSaveData(boolean b) {
+        inSaveData = b;
     }
 }

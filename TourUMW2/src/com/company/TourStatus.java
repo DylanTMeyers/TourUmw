@@ -282,5 +282,26 @@ public class TourStatus {
         	}
         	return null;
         }
+        
+        /**
+         * Method that lists all Items in the backpack, separated by commas.
+         *
+         * @return a String listing all Items in a Location, separated by commas
+         */
+        public String bpDataForSaveFile() {
+
+            String bpList = "";
+
+            for (int i = 0; i < backpack.size(); i++) {
+
+                if (i <= backpack.size()-2) {
+                    bpList = bpList + backpack.get(i).getName() + ",";
+
+                } else {
+                    bpList = bpList + backpack.get(i).getName();
+                }
+            }
+            return bpList;
+        }
 
 }
