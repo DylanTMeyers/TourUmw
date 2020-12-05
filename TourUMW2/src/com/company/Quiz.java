@@ -17,6 +17,13 @@ public class Quiz {
 	private Item quizItem;
 	private boolean solved;
 	
+	/**
+	 * This is the constructor for the Quiz class that takes in a file
+	 * to iterate through.
+	 * 
+	 * @param s Scanner that scans through file
+	 * @param c Campus
+	 */
 	public Quiz(Scanner s, Campus c) {
 		this.answerChoices = "";
 		this.question = "";
@@ -38,18 +45,38 @@ public class Quiz {
 		}
 	}
 	
+	/**
+	 * This setter method sets the value of the question field.
+	 * 
+	 * @param question the question for the quiz
+	 */
 	public void setQuestion(String question) {
 		this.question = question;
 	}
 	
+	/**
+	 * This getter method gets the value of question.
+	 * 
+	 * @return question the question for the quiz
+	 */
 	public String getQuestion() {
 		return question;
 	}
 	
+	/**
+	 * This setter method sets the value of the answerChoices field.
+	 * 
+	 * @param answerChoices the answer choices for the quiz
+	 */
 	public void setAnswerChoices(String answerChoices) {
 		this.answerChoices = answerChoices;
 	}
 	
+	/**
+	 * This getter method gets the value of answerChoices.
+	 * 
+	 * @return answerChoices the answer choices for the quiz
+	 */
 	public String getAnswerChoices() {
 		return answerChoices;
 	}
@@ -97,4 +124,14 @@ public class Quiz {
 		}
 		
 	}
+	
+	/**
+     * Accessor method for the quizItem field.
+     *
+     * @return the value of the quizItem field
+     */
+    public Item getQuizItem() {
+        return quizItem;
+    }
+
 }

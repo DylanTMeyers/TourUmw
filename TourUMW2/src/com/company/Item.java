@@ -18,7 +18,7 @@ public class Item {
     private Quiz itemQuiz;
     private ArrayList<Command> transform;
     private ArrayList<Command> disappear;
-    private Command teleport;
+    private boolean inSaveData;
 
 
     /**
@@ -135,8 +135,7 @@ public class Item {
                     disappear.add(disappearCommand);
                     break;
                 case "Teleport":
-                    Command teleportCommand = new Command(new Teleport(halfCommand.toString(), trans.toString(), StringArray[1],action,getName()));
-                    teleport = teleportCommand;
+
                     break;
             }
             alreadyHap = false;
@@ -228,9 +227,6 @@ public class Item {
         for(Command command: disappear){
             list.append(command.questions()).append("\n");
         }
-        if(teleport != null) {
-        list.append(teleport.questions()).append("\n");
-        }
 return(list.toString());
     }
     public Command transItem(String command){
@@ -250,8 +246,8 @@ return(list.toString());
             }
         }
         return n;
-    }
 
+    }
 
     public void setItemQuiz(Quiz quiz) {
     	this.itemQuiz = quiz;
@@ -260,10 +256,22 @@ return(list.toString());
     public Quiz getItemQuiz() {
     	return itemQuiz;
     }
-
-    public Command teleItem(){
-    	return teleport;
+    
+    /**
+     * Accessor method for the inSaveData field.
+     *
+     * @return the value of the inSaveData field
+     */
+    public boolean getInSaveData() {
+        return inSaveData;
     }
 
-
+    /**
+     * Mutator method for the startLocation field.
+     *
+     * @param b boolean for whether or not an Item in a save file
+     */
+    public void setInSaveData(boolean b) {
+        inSaveData = b;
+    }
 }

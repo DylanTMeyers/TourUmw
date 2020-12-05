@@ -253,20 +253,6 @@ public class TourStatus {
         }
         return msg;
         }
-    public String teleport(String location){
-        String msg = null;
-        for(int i= 0; i<backpack.size(); i++) {
-        		if(backpack.get(i).getName().equals("Linux laptop") ) {
-        	        msg = backpack.get(i).teleItem().getMsg();
-        	        msg = msg + "\nYou are now at "+location;
-        	        TourStatus.getInstance().setCurrentLocation(TourStatus.getInstance().getCampus().getLocation(location));
-                }
-        }
-        if(campus.getLocation(location) == null) {
-        	msg = "This Location does not exist on campus";
-        }
-        return msg;
-        }
         public String commandMsg(String command){
             for (Item item : backpack) {
                 if (item.disItem(command) != null) {
@@ -283,7 +269,6 @@ public class TourStatus {
                     }
             }
             return"no message";
-
         }
         public ArrayList<Item> getBackpack() {
         	return backpack;
@@ -297,10 +282,26 @@ public class TourStatus {
         	}
         	return null;
         }
+        
+        /**
+         * Method that lists all Items in the backpack, separated by commas.
+         *
+         * @return a String listing all Items in a Location, separated by commas
+         */
+        public String bpDataForSaveFile() {
 
+            String bpList = "";
 
+            for (int i = 0; i < backpack.size(); i++) {
+
+                if (i <= backpack.size()-2) {
+                    bpList = bpList + backpack.get(i).getName() + ",";
+
+                } else {
+                    bpList = bpList + backpack.get(i).getName();
+                }
+            }
+            return bpList;
         }
-        public Baseball play() {
-        	return new Baseball();
-        }
+
 }
