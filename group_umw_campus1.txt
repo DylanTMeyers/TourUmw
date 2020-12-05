@@ -260,4 +260,22 @@ in quite a few costumes.
 ---
 Y'all enjoy the rest of your day
 +++
+Campus Walk West
+Cool-looking student
+Hey! Are you a new student here? If you're still deciding on becoming an eagle, I can vouch for how great UMW is!
+Choice 1: Ask what the coolest thing about UMW is
+Hey! What's the coolest thing about UMW?
+The coolest thing? There's so many good things about UMW, though!
+But if I had to choose, I'd say the community. Everyone is
+welcoming here, and there's a ton of school spirit!
+Choice 2: Ask for food
+Do you have any food I can eat?
+What? I don't have any...
+Well, there's a couple places to eat on campus.
+My favorite place is Katora Coffee. Head west and go
+through the library to get there.
+(That reminds me, where did I put my coffee...?)
+---
+Hope to see you around!
++++
 *****
