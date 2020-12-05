@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class TourUMW {
 	private static boolean backpackOpen;
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
     	Scanner stdin = new Scanner(System.in);
 
         System.out.println("Do you have tour save data you wish to load? Type 'r or 'restore' to load a file," +
