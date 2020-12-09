@@ -217,6 +217,13 @@ public class TourStatus {
             return null;
         }
     }
+    
+    /**
+    * This method searches through the backpack to see if it contains an item.
+    *
+    * @param the name of the item
+    * @return boolean whether the back contains an item or not
+    */
     public boolean backpackContains(String item){
         boolean contains = false;
         for (Item i : backpack) {
@@ -226,6 +233,13 @@ public class TourStatus {
         }
         return contains;
     }
+    
+    /**
+    * This method replaces an item in the backpack.
+    *
+    * @param the command to use
+    * @return the message associated with the action
+    */
     public String itemsReplace(String command){
         String msg ="";
        for(int i= 0; i<backpack.size(); i++) {
@@ -242,6 +256,12 @@ public class TourStatus {
        return msg;
        }
 
+    /**
+    * This method removes an item from the backpack.
+    * 
+    * @param the command to perform
+    * @return the message of that command
+    */
     public String itemRemove(String command){
         String msg ="";
         for(int i= 0; i<backpack.size(); i++) {
@@ -253,30 +273,48 @@ public class TourStatus {
         }
         return msg;
         }
-        public String commandMsg(String command){
-            for (Item item : backpack) {
-                if (item.disItem(command) != null) {
-                    if (item.disItem(command).getStartCommand().equals(command)) {
-                        return item.disItem(command).getMsg();
-                    }
-                }
-            }
-            for (Item item : backpack) {
-                if (item.transItem(command) != null){
-                    if (item.transItem(command).getStartCommand().equals(command)) {
-                        return item.transItem(command).getMsg();
-                    }
-                    }
-            }
-            return"no message";
-        }
-        public ArrayList<Item> getBackpack() {
-        	return backpack;
-        }
+    
+      /**
+      * This method gets the messages of certain commands.
+      * 
+      * @param the command to perform
+      * @return the message of the command
+      */
+      public String commandMsg(String command){
+          for (Item item : backpack) {
+              if (item.disItem(command) != null) {
+                  if (item.disItem(command).getStartCommand().equals(command)) {
+                      return item.disItem(command).getMsg();
+                  }
+              }
+          }
+          for (Item item : backpack) {
+              if (item.transItem(command) != null){
+                  if (item.transItem(command).getStartCommand().equals(command)) {
+                      return item.transItem(command).getMsg();
+                  }
+               }
+          }
+          return"no message";
+      }
+    
+      /**
+      * This method gets the backpack ArrayList.
+      * 
+      * @return the backpack ArrayList
+      */
+      public ArrayList<Item> getBackpack() {
+           return backpack;
+      }
 
-        public Item getBackpackItem(String itemName) {
-        	for (Item i: backpack) {
-        		if (i.getName().equals(itemName)) {
+      /**
+      * This method gets an item in the backpack
+      * 
+      * @return an item in the backpack
+      */
+      public Item getBackpackItem(String itemName) {
+            for (Item i: backpack) {
+        	    if (i.getName().equals(itemName)) {
         			return i;
         		}
         	}
