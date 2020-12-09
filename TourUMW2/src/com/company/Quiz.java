@@ -81,30 +81,65 @@ public class Quiz {
 		return answerChoices;
 	}
 	
+	/**
+	*This setter method sets the value of answer.
+	*
+	*@param answer the answer to the quiz
+	*/
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
 	
+	/**
+	* This getter method gets teh value of answer.
+	*
+	* @return answer the answer to the quiz
+	*/
 	public String getAnswer() {
 		return answer;
 	}
 	
+	/**
+	* This setter method sets the value of solved.
+	* 
+	* @param solved boolean of whether the quiz has been solved
+	*/
 	public void setSolved(boolean solved) {
 		this.solved = solved;
 	}
 	
+	/**
+	* This getter method gets the value of solved.
+	*
+	* @return solved boolean whether the quiz had been solved or not
+	*/
 	public boolean getSolved() {
 		return solved;
 	}
 	
+	/**
+	* This setter method sets quizLocation.
+	*
+	* @param l the location where the quiz can be found
+	*/
 	public void setQuizLocation(Location l) {
 		this.quizLocation = l;
 	}
 	
+	/**
+	* This getter method gets the value of quizLocation.
+	*
+	* @return quizLocation the location of the quiz
+	*/
 	public Location getQuizLocation() {
 		return this.quizLocation;
 	}
 	
+	/**
+	* This method quizzes the student and tells them whether they answered correctly.
+	*
+	* @return a boolean value of whether the answer was correct or not
+	*/
 	public boolean quizStudent() {
 		if (this.solved == false) {
 			Scanner s = new Scanner(System.in);
@@ -125,7 +160,7 @@ public class Quiz {
 		
 	}
 	
-	/**
+     /**
      * Accessor method for the quizItem field.
      *
      * @return the value of the quizItem field
