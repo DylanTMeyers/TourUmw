@@ -1,11 +1,26 @@
 package com.company;
 
+/**
+* This class handles what should happen when a user tries to take a quiz.
+* 
+* @author Justin Daniels
+* @version 1.0
+*/
 public class QuizCommand implements UserInputCommand{
 	private String itemName;
 	
+	/**
+	* This constructor sets the value of the itemName field.
+	*/
 	public QuizCommand(String itemName) {
 		this.itemName = itemName;
 	}
+	
+	/**
+	* This method handles what should happen when a user tries to take a quiz.
+	*
+	* @return a String message
+	*/
 	@Override
 	public String carryOut() {
 		boolean hasItem = false;
