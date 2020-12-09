@@ -1,7 +1,12 @@
 package com.company;
 
 import java.util.Scanner;
-
+/**
+* This class holds information for people to interact with throughout the campus.
+*
+* @author Justin Daniels
+* @version 1.0
+*/
 public class Person {
 	
 	private String name;
@@ -15,6 +20,12 @@ public class Person {
 	private String goodbyeMessage;
 	private Location location;
 	
+	/**
+	* This constructor creates a persson object using a Scanner for a file and a Campus.
+	*
+	* @param s Scanner for the input file
+	* @param c Campus object where the people are
+	*/
 	public Person(Scanner s, Campus c) {
 		this.personTextOne = "";
 		this.personTextTwo = "";
@@ -51,6 +62,11 @@ public class Person {
 		
 	}
 	
+	/**
+	* This method allows the user to talk with the person.
+	*
+	* @return goodbyeMessage the message the person says when the user is done speaking with them
+	*/
 	public String talk() {
 		Scanner s = new Scanner(System.in);
 		String option = "";
@@ -76,11 +92,22 @@ public class Person {
 		}
 		
 		return goodbyeMessage;
-		
 	}
+	
+	/**
+	* This getter method gets the value of the name variable.
+	* 
+	* @return name the name of the person
+	*/
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	* This getter method get the value of the location variable.
+	* 
+	* @return location the location where the person can be found
+	*/
 	public Location getLocation() {
 		return location;
 	}
