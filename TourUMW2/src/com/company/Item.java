@@ -19,7 +19,7 @@ public class Item {
     private ArrayList<Command> transform;
     private ArrayList<Command> disappear;
     private boolean inSaveData;
-
+    private Command teleport;
 
     /**
      * Default constructor for objects of class Item.
@@ -135,7 +135,8 @@ public class Item {
                     disappear.add(disappearCommand);
                     break;
                 case "Teleport":
-
+                    Command teleportCommand = new Command(new Teleport(halfCommand.toString(), trans.toString(), StringArray[1],action,getName()));
+                    teleport = teleportCommand;
                     break;
             }
             alreadyHap = false;
@@ -273,5 +274,8 @@ return(list.toString());
      */
     public void setInSaveData(boolean b) {
         inSaveData = b;
+    }   
+    public Command teleItem(){
+    	return teleport;
     }
 }

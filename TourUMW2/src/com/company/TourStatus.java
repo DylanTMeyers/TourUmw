@@ -273,7 +273,25 @@ public class TourStatus {
         }
         return msg;
         }
-    
+    	public String teleport(String location) {
+		String msg = null;
+
+		boolean hasAQuiz = false;
+		for (int i = 0; i < backpack.size(); i++) {
+			if (!backpack.get(i).getItemQuiz().getSolved()) {
+				hasAQuiz = true;
+				msg = " GOTTA TAKE THE QUIZ IN BACKPACK FIRST!";
+			} else if (backpack.get(i).getName().equals("Linux laptop") && !hasAQuiz) {
+				msg = backpack.get(i).teleItem().getMsg();
+				msg = msg + "\nYou are now at " + location;
+				TourStatus.getInstance().setCurrentLocation(TourStatus.getInstance().getCampus().getLocation(location));
+			}
+		}
+		if (campus.getLocation(location) == null && !hasAQuiz) {
+			msg = "This Location does not exist on campus";
+		}
+		return msg;
+	}
       /**
       * This method gets the messages of certain commands.
       * 
@@ -342,4 +360,7 @@ public class TourStatus {
             return bpList;
         }
 
+	public Baseball play() {
+		return new Baseball();
+	}
 }

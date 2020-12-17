@@ -16,7 +16,7 @@ public class TourUMW {
 	private static boolean backpackOpen;
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
     	Scanner stdin = new Scanner(System.in);
-
+    	String ogStartingLocation = "";
         System.out.println("Do you have tour save data you wish to load? Type 'r or 'restore' to load a file," +
                 "or press any other key to start a new tour.");
         String selectData = stdin.next();
@@ -50,17 +50,27 @@ public class TourUMW {
 
                 UserInputCommand command = promptUser(stdin);
 
-                while (command != null) {
+                        while (command != null) {
+                                              for(int l = 0; 40>l; l++){
+                                                      System.out.println();
+                                              }
 
-                    System.out.println(command.carryOut());
+            System.out.println(command.carryOut());
 
-                    if (tour.getCurrentLocation().getPerson() != null) {
-                        System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" +
-                                "     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
-                    }
 
-                    command = promptUser(stdin);
-                }
+            if(tour.getCurrentLocation().getName().equals("Sports Fields") && ogStartingLocation !=tour.getCurrentLocation().getName() ) {
+         
+            	System.out.println("A baseball game is being played on the Sport Fields would you like to join??");
+		System.out.println();
+                System.out.println("Would you like to watch baseball? (If so type yes)");
+                String Yes = stdin.nextLine();
+                if(Yes.toLowerCase().equals("yes"))
+            	tour.play().letsPlay();
+            }
+             ogStartingLocation = tour.getCurrentLocation().getName();
+            command = promptUser(stdin);
+        }
+        stdin.close();
 
             } else {   //group_umw_campus1.txt
 
@@ -87,20 +97,28 @@ public class TourUMW {
 
                 UserInputCommand command = promptUser(stdin);
 
-                while (command != null) {
-
-                    System.out.println(command.carryOut());
-
-                    if (tour.getCurrentLocation().getPerson() != null) {
-                        System.out.println(tour.getCurrentLocation().getPerson().getName() + "\n" +
-                                "     Type 'talk' to talk to " + tour.getCurrentLocation().getPerson().getName() + "\n");
-                    }
-
-                    command = promptUser(stdin);
-                }
+                                      while (command != null) {
+					      for(int l = 0; 40>l; l++){
+						      System.out.println();
+					      }
+            System.out.println(command.carryOut());
+      
+            if(tour.getCurrentLocation().getName().equals("Sports Fields") && ogStartingLocation !=tour.getCurrentLocation().getName() ) {
+                System.out.println("A baseball game is being played on the Sport Fields would you like to join??");
+                System.out.println();
+                System.out.println("Would you like to watch baseball? (If so type yes)");
+                String Yes = stdin.nextLine();
+                if(Yes.toLowerCase().equals("yes"))
+                tour.play().letsPlay();
             }
+             ogStartingLocation = tour.getCurrentLocation().getName();
+            command = promptUser(stdin);
+        }
 
         stdin.close();
+            }
+
+       
     }
 
 
